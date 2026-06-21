@@ -57,6 +57,8 @@ Local development flow:
 
 `init` delegates Zephyr workspace setup to Dephy. Product builds consume source
 and Zephyr module metadata from `deps/`, not from arbitrary sibling checkouts.
+Product repositories should depend on module repositories only; do not list
+other product repositories in `deps.json`.
 
 ## Tests
 
@@ -67,7 +69,9 @@ make -C tests/linux test
 The integration scripts validate the product repo contract:
 
 - required product layout exists;
+- `repo.json` identifies the repo as a product template;
 - dependency sync is idempotent and rejects dirty checkouts;
+- `deps.json` lists module dependencies only;
 - local `replace` creates non-git dependency copies;
 - build scripts parse `deps.json` and produce expected Zephyr inputs.
 
@@ -76,4 +80,3 @@ The integration scripts validate the product repo contract:
 Rename the product, update `deps.json` pins, add product-owned modules under
 `app/src/`, and extend `tests/linux/` with product-specific host tests. Keep
 reusable drivers, protocol adapters, and broker behavior in their module repos.
-

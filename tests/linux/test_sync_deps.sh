@@ -4,6 +4,7 @@ set -eu
 ROOT_DIR=$(CDPATH= cd -- "$(dirname -- "$0")/../.." && pwd)
 SCRIPT="$ROOT_DIR/scripts/sync_deps.sh"
 BROKER_PATH="$ROOT_DIR/deps/mqtt_min_broker"
+MODBUS_PATH="$ROOT_DIR/deps/modbus_zephyr_esp32"
 PASS=0
 FAIL=0
 
@@ -41,6 +42,13 @@ PINNED_BROKER=$(sh "$SCRIPT" --version mqtt_min_broker)
 check "T1: download exits 0" sh "$SCRIPT" download
 check "T2: second download exits 0" sh "$SCRIPT" download
 
+if [ -f "$MODBUS_PATH/repo.json" ] &&
+   jq -e '.repo_type == "module"' "$MODBUS_PATH/repo.json" >/dev/null; then
+    ok "T2b: modbus dependency is marked as module"
+else
+    fail "T2b: modbus dependency should be marked as module"
+fi
+
 actual_version=$(git -C "$BROKER_PATH" describe --tags --exact-match 2>/dev/null || git -C "$BROKER_PATH" rev-parse --short HEAD)
 if [ "$actual_version" = "$PINNED_BROKER" ]; then
     ok "T3: broker checkout matches pinned version"
@@ -72,4 +80,3 @@ fi
 echo ""
 echo "$PASS passed, $FAIL failed"
 [ "$FAIL" -eq 0 ]
-

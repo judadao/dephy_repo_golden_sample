@@ -30,10 +30,22 @@ expect_dir docs
 expect_dir tests/linux
 expect_file tests/linux/Makefile
 
-if jq -e '.deps.dephy and .deps.mqtt_min_broker and .build.board' "$ROOT_DIR/deps.json" >/dev/null; then
-    ok "deps.json declares dephy, mqtt_min_broker, and build.board"
+if jq -e '.repo_type == "product_template"' "$ROOT_DIR/repo.json" >/dev/null; then
+    ok "repo.json marks this repo as a product template"
+else
+    fail "repo.json should mark this repo as a product template"
+fi
+
+if jq -e '.deps.dephy and .deps.mqtt_min_broker and .deps.modbus_zephyr_esp32 and .build.board' "$ROOT_DIR/deps.json" >/dev/null; then
+    ok "deps.json declares module deps and build.board"
 else
     fail "deps.json missing required product dependency fields"
+fi
+
+if jq -e '.deps | has("dephy_iot") | not' "$ROOT_DIR/deps.json" >/dev/null; then
+    ok "deps.json does not depend on product repos"
+else
+    fail "deps.json must not depend on dephy_iot product repo"
 fi
 
 if grep -q 'project(dephy_repo_golden_sample)' "$ROOT_DIR/app/CMakeLists.txt"; then
@@ -51,4 +63,3 @@ fi
 echo ""
 echo "$PASS passed, $FAIL failed"
 [ "$FAIL" -eq 0 ]
-

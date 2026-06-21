@@ -15,6 +15,10 @@ Use this repository as the starting point for Dephy product applications.
 Reusable broker, protocol, board, and driver behavior should be implemented in
 module repositories first, then consumed here through `deps.json`.
 
+`repo.json` marks this repository as a `product_template`. Product repositories
+should use `repo_type: product`; reusable dependency repositories should use
+`repo_type: module`.
+
 ## Product Build Contract
 
 Product builds should consume only dependency material under `deps/`. This keeps
@@ -23,4 +27,3 @@ trees.
 
 `scripts/sync_deps.sh replace` exists for local iteration. It copies sibling
 checkouts into `deps/` without `.git`, build outputs, or local Zephyr workspaces.
-

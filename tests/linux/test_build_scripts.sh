@@ -18,11 +18,15 @@ else
 fi
 
 deps=$("$ROOT_DIR/scripts/sync_deps.sh" --list | tr '\n' ' ')
+for dep in dephy mqtt_min_broker modbus_zephyr_esp32; do
+    case "$deps" in
+        *"$dep"*) ok "sync_deps --list includes $dep" ;;
+        *) fail "sync_deps --list missing $dep: $deps" ;;
+    esac
+done
 case "$deps" in
-    *dephy*dephy_iot*mqtt_min_broker*|*dephy*mqtt_min_broker*dephy_iot*|*dephy_iot*dephy*mqtt_min_broker*|*dephy_iot*mqtt_min_broker*dephy*|*mqtt_min_broker*dephy*dephy_iot*|*mqtt_min_broker*dephy_iot*dephy*)
-        ok "sync_deps --list includes expected dependencies" ;;
-    *)
-        fail "sync_deps --list missing expected dependencies: $deps" ;;
+    *dephy_iot*) fail "sync_deps --list should not include dephy_iot product repo" ;;
+    *) ok "sync_deps --list excludes product repos" ;;
 esac
 
 broker_version=$("$ROOT_DIR/scripts/sync_deps.sh" --version mqtt_min_broker)
@@ -48,4 +52,3 @@ fi
 echo ""
 echo "$PASS passed, $FAIL failed"
 [ "$FAIL" -eq 0 ]
-

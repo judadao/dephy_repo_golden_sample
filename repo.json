@@ -1,0 +1,7 @@
+{
+  "repo_type": "product_template",
+  "name": "dephy_repo_golden_sample",
+  "dependency_policy": "deps.json may reference reusable module repos only; do not depend on product repos",
+  "deps_dir": "deps"
+}
+

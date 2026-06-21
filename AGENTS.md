@@ -17,6 +17,9 @@ External/release builds use dependency `repo` URLs and pinned `version` tags.
 Local builds may use dependency `local` sibling paths and copy them into `deps/`
 with `scripts/sync_deps.sh replace`.
 
+Product repositories must depend on module repositories only. Do not add another
+product repository to `deps.json`.
+
 ## Commands
 
 - `./scripts/sync_deps.sh download`: clone/fetch pinned dependencies.
@@ -35,4 +38,3 @@ integration functions. Keep product-specific workflow code under `app/src/`.
 Run `make -C tests/linux test` after changing scripts, dependency layout, or
 product app structure. Run `./scripts/build_product.sh --dry-run` before a full
 Zephyr build when editing `deps.json`.
-
