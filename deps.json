@@ -1,0 +1,30 @@
+{
+  "deps": {
+    "dephy": {
+      "repo": "git@github.com:judadao/dephy.git",
+      "local": "../dephy",
+      "version": "dephy-v0.1.6",
+      "path": "deps/dephy",
+      "profile": "esp32",
+      "module_path": "deps/dephy/boards/esp32"
+    },
+    "dephy_iot": {
+      "repo": "git@github.com:judadao/dephy_iot.git",
+      "local": "../dephy_iot",
+      "version": "b0bd62b",
+      "path": "deps/dephy_iot"
+    },
+    "mqtt_min_broker": {
+      "repo": "git@github.com:judadao/zephy_min_mqtt_broker.git",
+      "local": "../mqtt_min_broker",
+      "version": "mqtt-v0.1.2",
+      "path": "deps/mqtt_min_broker",
+      "tag_pattern": "mqtt-v*"
+    }
+  },
+  "build": {
+    "board": "esp32_devkitc/esp32/procpu",
+    "dephy_workspace": "deps/dephy/zephyrproject"
+  }
+}
+

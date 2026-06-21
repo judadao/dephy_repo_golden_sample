@@ -1,0 +1,7 @@
+build/
+build_out/
+deps/
+tests/linux/out/
+*.swp
+*.tmp
+
