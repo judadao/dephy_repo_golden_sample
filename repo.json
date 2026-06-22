@@ -1,7 +1,7 @@
 {
   "repo_type": "product_template",
   "name": "dephy_repo_golden_sample",
-  "description": "Executable golden sample and audit contract for Dephy product application repositories.",
+  "description": "Golden sample for Dephy product apps, showing the expected dependency policy, Zephyr app layout, tests, docs, and repo structure audit.",
   "dependency_policy": "deps.json may reference reusable module repos only; do not depend on product repos",
   "deps_dir": "deps",
   "license": "MIT",
@@ -11,6 +11,8 @@
     "product-template",
     "zephyr-app",
     "dependency-management",
-    "repository-template"
+    "repository-template",
+    "product-template",
+    "quality-gate"
   ]
 }
