@@ -58,3 +58,8 @@ Products compose modules. Modules own reusable behavior.
 - `docs/product_structure.md`: product repo contract.
 - `docs/validation.md`: validation commands and build flow.
 - `docs/todo.md`: current TODO summary.
+
+## License
+
+MIT. See `LICENSE` and `NOTICE.md`. Reuse and references are allowed, but the
+copyright notice and attribution to Judd (judadao) must be preserved.
