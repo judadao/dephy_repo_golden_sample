@@ -12,7 +12,6 @@
     "zephyr-app",
     "dependency-management",
     "repository-template",
-    "product-template",
     "quality-gate"
   ]
 }
