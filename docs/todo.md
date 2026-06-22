@@ -1,23 +1,17 @@
-# Product Golden Sample TODO
+# TODO
 
-Tracks work for the product repository template.
+Source of truth: `docs/todo.yaml`. Update YAML before starting or completing work.
 
-## Repo Identity
+## repo
 
-- [x] Add `repo.json` so the template is machine-recognizable as
-      `repo_type: product_template`.
-- [x] Document that product repositories may depend on module repositories only.
+- [x] Add docs/todo.yaml to make the product golden sample globally trackable.
+- [x] Keep repo.json machine-recognizable as repo_type product_template.
 
-## Dependency Model
+## dependencies
 
-- [x] Remove product repositories from `deps.json`.
-- [x] Keep sample dependencies limited to reusable modules: Dephy board support,
-      MQTT broker, and Modbus adapter.
-- [x] Add integration coverage that fails if `dephy_iot` or another product repo
-      is added as a dependency.
+- [x] Keep sample dependencies limited to reusable modules.
 
-## Validation
+## validation
 
-- [x] Keep Linux integration checks for repo layout, build-script parsing, and
-      dependency sync behavior.
-- [x] Run `make -C tests/linux test` after dependency model changes.
+- [x] Keep Linux integration checks for repo layout, build script parsing, and dependency sync behavior.
+- [ ] Add a script that reports drift between the product golden sample and product repos.

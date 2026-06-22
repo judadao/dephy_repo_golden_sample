@@ -1,0 +1,29 @@
+version: 1
+policy:
+  source_of_truth: docs/todo.yaml
+  rules:
+  - Use dephy_todo as the global TODO entry point.
+  - Before starting work, add or update the relevant TODO item.
+  - When behavior changes, update TODO status in the same change.
+  - Keep docs/todo.md as a human-readable summary generated from this file.
+items:
+- id: todo-yaml-source
+  area: repo
+  title: Add docs/todo.yaml to make the product golden sample globally trackable.
+  status: done
+- id: repo-identity
+  area: repo
+  title: Keep repo.json machine-recognizable as repo_type product_template.
+  status: done
+- id: dependency-model
+  area: dependencies
+  title: Keep sample dependencies limited to reusable modules.
+  status: done
+- id: validation-commands
+  area: validation
+  title: Keep Linux integration checks for repo layout, build script parsing, and dependency sync behavior.
+  status: done
+- id: product-template-drift-check
+  area: validation
+  title: Add a script that reports drift between the product golden sample and product repos.
+  status: todo
