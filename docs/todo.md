@@ -14,4 +14,4 @@ Source of truth: `docs/todo.yaml`. Update YAML before starting or completing wor
 ## validation
 
 - [x] Keep Linux integration checks for repo layout, build script parsing, and dependency sync behavior.
-- [ ] Add a script that reports drift between the product golden sample and product repos.
+- [x] Add a script that reports drift between the product golden sample and product repos.

@@ -21,9 +21,12 @@ items:
   status: done
 - id: validation-commands
   area: validation
-  title: Keep Linux integration checks for repo layout, build script parsing, and dependency sync behavior.
+  title: Keep Linux integration checks for repo layout, build script parsing, and
+    dependency sync behavior.
   status: done
 - id: product-template-drift-check
   area: validation
-  title: Add a script that reports drift between the product golden sample and product repos.
-  status: todo
+  title: Add a script that reports drift between the product golden sample and product
+    repos.
+  status: done
+  notes: Added scripts/audit_product_structure.sh and wired it into tests/linux.

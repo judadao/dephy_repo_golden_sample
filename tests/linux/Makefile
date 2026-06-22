@@ -14,7 +14,9 @@ integration-tests:
 	@echo ""
 	@echo "--- test_sync_deps ---"
 	@sh test_sync_deps.sh
+	@echo ""
+	@echo "--- audit_product_structure ---"
+	@sh ../../scripts/audit_product_structure.sh ../..
 
 clean:
 	rm -rf out
-

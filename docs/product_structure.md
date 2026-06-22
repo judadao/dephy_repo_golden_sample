@@ -27,3 +27,7 @@ trees.
 
 `scripts/sync_deps.sh replace` exists for local iteration. It copies sibling
 checkouts into `deps/` without `.git`, build outputs, or local Zephyr workspaces.
+
+Run `scripts/audit_product_structure.sh PRODUCT_REPO...` to check that product
+repos keep the expected app, dependency, script, docs, and Linux test entry
+points.
