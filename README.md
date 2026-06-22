@@ -7,14 +7,20 @@ application behavior, provisioning, product tests, and dependency pins. Reusable
 broker, protocol, IO, board, and driver behavior should be implemented in
 module repos first, released there, then pinned by the product.
 
-## Why This Exists
+## Overview
+
+Use this repo as the reference shape for product applications. It explains how a
+product composes pinned modules, owns product behavior, and keeps reusable logic
+out of product-only source directories.
+
+## Key Value
 
 - Product repos need a consistent dependency flow.
 - Reusable logic should not be copied into product `app/src/`.
 - CI and local development should run the same sync/build/test commands.
 - Refactors need an audit target to decide whether a product repo is drifting.
 
-## Normal Flow
+## How To Use
 
 1. Product pins reusable modules in `deps.json`.
 2. `scripts/sync_deps.sh download` fetches remote dependencies.
