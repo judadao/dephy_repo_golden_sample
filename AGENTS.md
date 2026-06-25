@@ -36,5 +36,9 @@ integration functions. Keep product-specific workflow code under `app/src/`.
 ## Testing
 
 Run `make -C tests/linux test` after changing scripts, dependency layout, or
-product app structure. Run `./scripts/build_product.sh --dry-run` before a full
+product app structure. The default `test` target must trigger suites through
+`dephy_testkit` using `tests/linux/trigger_testkit.sh` so CI receives a JSON
+result line for each suite. When adding or changing a test case or test script,
+add or update the matching Makefile target and make sure it is reachable from a
+`testkit-*` target. Run `./scripts/build_product.sh --dry-run` before a full
 Zephyr build when editing `deps.json`.

@@ -53,6 +53,27 @@ flowchart TD
 
 Products compose modules. Modules own reusable behavior.
 
+## Systematic Regression Testing
+
+From the workspace root, run the shared pytest regression module:
+
+```sh
+../dephy_testkit/.venv/bin/python -m pytest ../dephy_testkit/tests/regression --module dephy_repo_golden_sample
+../dephy_testkit/.venv/bin/python -m pytest ../dephy_testkit/tests/regression --module dephy_repo_golden_sample --profile integration
+```
+
+The local repo tests remain:
+
+```sh
+sh scripts/audit_product_structure.sh .
+make -C tests/linux test
+```
+
+`make -C tests/linux test` is the canonical local entry point and must trigger
+its suites through `dephy_testkit` via `tests/linux/trigger_testkit.sh`. When a
+test case or script changes, update the matching Makefile target and the
+`testkit-*` wrapper in the same change.
+
 ## Docs
 
 - `docs/product_structure.md`: product repo contract.

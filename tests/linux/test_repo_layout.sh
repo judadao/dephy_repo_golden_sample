@@ -29,6 +29,7 @@ expect_file scripts/build_product.sh
 expect_dir docs
 expect_dir tests/linux
 expect_file tests/linux/Makefile
+expect_file tests/linux/trigger_testkit.sh
 
 if jq -e '.repo_type == "product_template"' "$ROOT_DIR/repo.json" >/dev/null; then
     ok "repo.json marks this repo as a product template"
@@ -36,7 +37,7 @@ else
     fail "repo.json should mark this repo as a product template"
 fi
 
-if jq -e '.deps.dephy and .deps.mqtt_min_broker and .deps.modbus_zephyr_esp32 and .build.board' "$ROOT_DIR/deps.json" >/dev/null; then
+if jq -e '.deps.dephy and .deps.mqtt_min_broker and .deps.modbus_zephyr_esp32 and .deps.dephy_testkit and .build.board' "$ROOT_DIR/deps.json" >/dev/null; then
     ok "deps.json declares module deps and build.board"
 else
     fail "deps.json missing required product dependency fields"

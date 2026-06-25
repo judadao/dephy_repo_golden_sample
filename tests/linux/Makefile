@@ -1,8 +1,12 @@
 ROOT := ../..
 
-.PHONY: test integration-tests clean
+.PHONY: test integration-tests testkit-integration-tests clean
 
-test: integration-tests
+test: testkit-integration-tests
+
+testkit-integration-tests:
+	@sh trigger_testkit.sh dephy_repo_golden_sample_integration \
+	    $(MAKE) -C $(CURDIR) integration-tests
 
 integration-tests:
 	@echo ""

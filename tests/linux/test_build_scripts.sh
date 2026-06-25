@@ -18,7 +18,7 @@ else
 fi
 
 deps=$("$ROOT_DIR/scripts/sync_deps.sh" --list | tr '\n' ' ')
-for dep in dephy mqtt_min_broker modbus_zephyr_esp32; do
+for dep in dephy mqtt_min_broker modbus_zephyr_esp32 dephy_testkit; do
     case "$deps" in
         *"$dep"*) ok "sync_deps --list includes $dep" ;;
         *) fail "sync_deps --list missing $dep: $deps" ;;
